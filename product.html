@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peony | Entreposto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-bg: #faf8f6;
+      --color-text: #333029;
+      --color-header-bg: #e9e5d9;
+      --color-cream: #f5f0eb;
+      --color-warm-gray: #a09a8f;
+      --color-border: #d9d3c7;
+      --font-heading: 'Fraunces', serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announcement-bar {
+      background: var(--color-text);
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      font-weight: 400;
+      overflow: hidden;
+      height: 33px;
+      line-height: 33px;
+    }
+
+    .announcement-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideAnnouncements 8s ease-in-out infinite;
+    }
+
+    .announcement-slider span {
+      height: 33px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes slideAnnouncements {
+      0%, 40% { transform: translateY(0); }
+      50%, 90% { transform: translateY(-33px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* ========== HEADER ========== */
+    .site-header {
+      background: var(--color-header-bg);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 1px 12px rgba(51, 48, 41, 0.08);
+    }
+
+    .logo { flex-shrink: 0; }
+    .logo svg { height: 44px; width: auto; }
+
+    .main-nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .main-nav a,
+    .main-nav .nav-dropdown-trigger {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: 0.025em;
+      position: relative;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity 0.2s;
+    }
+
+    .main-nav a:hover,
+    .main-nav .nav-dropdown-trigger:hover { opacity: 0.65; }
+
+    .nav-dropdown-trigger svg { width: 10px; height: 10px; transition: transform 0.25s ease; }
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(14px);
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(51, 48, 41, 0.12);
+      padding: 16px 24px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(8px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-trigger svg { transform: rotate(180deg); }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 6px 0;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .nav-dropdown-menu a:hover { opacity: 0.6; }
+
+    .header-icons { display: flex; align-items: center; gap: 20px; }
+
+    .header-icons button,
+    .header-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .header-icons button:hover,
+    .header-icons a:hover { opacity: 0.6; }
+
+    .header-icons svg { width: 22px; height: 22px; }
+
+    .lang-select {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-select svg { width: 10px; height: 10px; }
+
+    /* ========== PRODUCT PAGE ========== */
+    .product-page {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 440px;
+      gap: 48px;
+    }
+
+    /* Left column: images */
+    .product-images {
+      display: flex;
+      gap: 16px;
+    }
+
+    .thumbnail-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .thumbnail.active {
+      border-color: var(--color-text);
+    }
+
+    .thumbnail:hover {
+      border-color: var(--color-warm-gray);
+    }
+
+    .thumbnail.active:hover {
+      border-color: var(--color-text);
+    }
+
+    .thumbnail-swatch {
+      width: 100%;
+      height: 100%;
+    }
+
+    .main-image {
+      flex: 1;
+      aspect-ratio: 4/5;
+      border-radius: 4px;
+      overflow: hidden;
+      max-height: 680px;
+    }
+
+    .main-image-swatch {
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Right column: product info */
+    .product-info {
+      padding-top: 8px;
+    }
+
+    .product-title {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 1px;
+    }
+
+    .stars svg {
+      width: 15px;
+      height: 15px;
+      fill: #c9a96e;
+    }
+
+    .review-count {
+      font-size: 14px;
+      color: var(--color-warm-gray);
+    }
+
+    .product-price {
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .free-shipping-note {
+      font-size: 13px;
+      color: var(--color-warm-gray);
+      margin-bottom: 28px;
+    }
+
+    /* Size selector */
+    .size-label {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .size-label strong {
+      font-weight: 600;
+    }
+
+    .size-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .size-pill {
+      height: 40px;
+      padding: 0 18px;
+      border-radius: 20px;
+      border: 1.5px solid #d9d3c7;
+      background: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: border-color 0.2s;
+      display: flex;
+      align-items: center;
+    }
+
+    .size-pill:hover {
+      border-color: var(--color-warm-gray);
+    }
+
+    .size-pill.active {
+      border-color: var(--color-text);
+      border-width: 2px;
+    }
+
+    .size-pill.sold-out {
+      color: #bbb;
+      border-color: #e8e4de;
+      cursor: not-allowed;
+      position: relative;
+    }
+
+    .size-pill.sold-out::after {
+      content: '';
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 50%;
+      height: 1px;
+      background: #ccc;
+    }
+
+    /* Color swatches */
+    .color-collection-heading {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .color-swatch {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid #e0dcd6;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .color-swatch:hover {
+      border-color: var(--color-warm-gray);
+    }
+
+    .color-swatch.active {
+      border-color: var(--color-text);
+      box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-text);
+    }
+
+    .originals-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 55px);
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    /* Add to cart */
+    .add-to-cart {
+      width: 100%;
+      padding: 13px 25px;
+      background: #333029;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 6px;
+      letter-spacing: 0.425px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+      margin-bottom: 28px;
+    }
+
+    .add-to-cart:hover {
+      background: #1a1815;
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .trust-badge svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--color-text);
+      fill: none;
+      stroke-width: 1.2;
+      margin: 0 auto 8px;
+      display: block;
+    }
+
+    .trust-badge span {
+      font-size: 11px;
+      line-height: 1.35;
+      color: var(--color-warm-gray);
+      display: block;
+    }
+
+    /* Accordion */
+    .accordion-item {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      font-family: var(--font-body);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--color-text);
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: left;
+    }
+
+    .accordion-trigger:hover {
+      opacity: 0.7;
+    }
+
+    .accordion-trigger svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--color-text);
+      fill: none;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .accordion-item.open .accordion-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .accordion-content-inner {
+      padding: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--color-warm-gray);
+    }
+
+    .accordion-content-inner p {
+      margin-bottom: 10px;
+    }
+
+    .accordion-content-inner ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .accordion-content-inner ul li {
+      margin-bottom: 4px;
+    }
+
+    /* Share row */
+    .share-row {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+      margin-top: 4px;
+    }
+
+    .share-row a {
+      font-size: 13px;
+      color: var(--color-warm-gray);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+
+    .share-row a:hover {
+      color: var(--color-text);
+    }
+
+    /* ========== FOOTER ========== */
+    .site-footer {
+      padding: 64px 48px 40px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-newsletter h4 {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+
+    .newsletter-form { display: flex; gap: 0; }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input::placeholder { color: var(--color-warm-gray); }
+    .newsletter-form input:focus { border-color: var(--color-text); }
+
+    .newsletter-form button {
+      padding: 12px 24px;
+      background: var(--color-text);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .newsletter-form button:hover { background: #1a1815; }
+
+    .footer-col h5 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul li { margin-bottom: 8px; }
+
+    .footer-col ul li a {
+      font-size: 13.5px;
+      color: var(--color-warm-gray);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--color-text); }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .footer-social { display: flex; gap: 12px; }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .footer-social a:hover { opacity: 0.6; }
+    .footer-social svg { width: 20px; height: 20px; fill: var(--color-text); }
+
+    .payment-icons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .payment-icons .pay-icon {
+      width: 38px;
+      height: 24px;
+      background: #fff;
+      border: 1px solid #e5e2dd;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--color-warm-gray);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-bottom .copyright {
+      font-size: 12px;
+      color: var(--color-warm-gray);
+    }
+
+    .footer-logo svg {
+      height: 48px;
+      opacity: 0.25;
+    }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .site-header { padding: 0 20px; }
+      .main-nav { display: none; }
+      .product-page {
+        grid-template-columns: 1fr;
+        padding: 24px 20px 60px;
+        gap: 32px;
+      }
+      .product-images {
+        flex-direction: column-reverse;
+      }
+      .thumbnail-strip {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+      .main-image {
+        aspect-ratio: 1;
+        max-height: none;
+      }
+      .originals-grid {
+        grid-template-columns: repeat(6, 48px);
+      }
+      .color-swatch {
+        width: 48px;
+        height: 48px;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <span>Life-Changing Softness</span>
+      <span>FREE shipping on orders $250+</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 170 50" fill="none">
+        <text x="0" y="38" font-family="'Fraunces', serif" font-size="26" font-weight="300" font-style="italic" fill="#333029">entreposto</text>
+      </svg>
+    </a>
+
+    <nav class="main-nav">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">
+          Shop All
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="#">The Original</a>
+          <a href="#">New Arrivals</a>
+          <a href="#">Weighted Blankets</a>
+          <a href="#">Spring Collection</a>
+          <a href="#">The XL</a>
+          <a href="#">Pillows</a>
+          <a href="#">Pet Blankets</a>
+          <a href="#">Accessories</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">
+          About Us
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Letters</a>
+          <a href="#">Loyalty Program</a>
+          <a href="#">Blankets for the Brave</a>
+          <a href="#">Ambassador Program</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-icons">
+      <button class="lang-select">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='t'%3E%3Crect width='60' height='30'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23t)'%3E%3Crect width='60' height='30' fill='%23002868'/%3E%3Cg fill='%23bf0a30'%3E%3Crect y='3.46' width='60' height='2.31'/%3E%3Crect y='8.08' width='60' height='2.31'/%3E%3Crect y='12.69' width='60' height='2.31'/%3E%3Crect y='17.31' width='60' height='2.31'/%3E%3Crect y='21.92' width='60' height='2.31'/%3E%3Crect y='26.54' width='60' height='2.31'/%3E%3C/g%3E%3Crect width='24' height='16.15' fill='%23002868'/%3E%3C/g%3E%3C/svg%3E" alt="" style="width:18px;height:12px;border-radius:1px;vertical-align:middle;margin-right:4px;">
+        US EN
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+      </button>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- PRODUCT PAGE -->
+  <main class="product-page">
+
+    <!-- LEFT: Product Images -->
+    <div class="product-images">
+      <div class="thumbnail-strip">
+        <div class="thumbnail active" onclick="setMainImage(0, this)">
+          <div class="thumbnail-swatch" style="background: linear-gradient(135deg, #f2c4cc 0%, #e8a0b0 30%, #f0b8c4 50%, #eaaab8 70%, #f5d0d8 100%);"></div>
+        </div>
+        <div class="thumbnail" onclick="setMainImage(1, this)">
+          <div class="thumbnail-swatch" style="background: linear-gradient(160deg, #f0b8c4 0%, #e8a0b0 40%, #d89aa8 60%, #f2c8d0 100%);"></div>
+        </div>
+        <div class="thumbnail" onclick="setMainImage(2, this)">
+          <div class="thumbnail-swatch" style="background: linear-gradient(120deg, #e0c8b0 0%, #c8a888 30%, #b89878 50%, #d4b898 80%, #e8d8c4 100%);"></div>
+        </div>
+        <div class="thumbnail" onclick="setMainImage(3, this)">
+          <div class="thumbnail-swatch" style="background: linear-gradient(140deg, #d8c0b0 0%, #e8a0b0 25%, #f0c8d0 50%, #e0b8a8 75%, #c8a090 100%);"></div>
+        </div>
+      </div>
+
+      <div class="main-image">
+        <div class="main-image-swatch" id="mainImageSwatch" style="background: linear-gradient(135deg, #f2c4cc 0%, #e8a0b0 30%, #f0b8c4 50%, #eaaab8 70%, #f5d0d8 100%);"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Product Info -->
+    <div class="product-info">
+      <h1 class="product-title">Peony</h1>
+
+      <div class="product-rating">
+        <div class="stars">
+          <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+          <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+          <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+          <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+          <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+        </div>
+        <span class="review-count">(2 Reviews)</span>
+      </div>
+
+      <div class="product-price">$325.00</div>
+      <div class="free-shipping-note">FREE shipping on orders $250+</div>
+
+      <!-- Size Selector -->
+      <div class="size-label">Size: <strong id="selectedSizeLabel">Large (60 X 72 inches)</strong></div>
+      <div class="size-pills">
+        <button class="size-pill active" onclick="selectSize(this, 'Large (60 X 72 inches)')">Large</button>
+        <button class="size-pill" onclick="selectSize(this, 'Medium (50 X 60 inches)')">Medium</button>
+        <button class="size-pill sold-out" disabled>Baby</button>
+        <button class="size-pill" onclick="selectSize(this, 'The Lola XL (72 X 90 inches)')">The Lola XL</button>
+      </div>
+
+      <!-- Color Swatches: Spring Collection -->
+      <div class="color-collection-heading">Spring Collection</div>
+      <div class="color-swatches">
+        <div class="color-swatch" style="background: #d8c8e8;" title="Wisteria" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #c8ddc8;" title="Greenhouse" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch active" style="background: #e8a0b0;" title="Peony" onclick="selectSwatch(this)"></div>
+      </div>
+
+      <!-- Color Swatches: Originals -->
+      <div class="color-collection-heading">Originals</div>
+      <div class="originals-grid">
+        <!-- Row 1 -->
+        <div class="color-swatch" style="background: #f5f0e8;" title="Antique Ivory" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #ddd0c0;" title="Desert Dune" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #d4b896;" title="Caramel" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #c4a67a;" title="Toasted Almond" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #8a6848;" title="Brown" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #e8ddd0;" title="Bondi Beige" onclick="selectSwatch(this)"></div>
+        <!-- Row 2 -->
+        <div class="color-swatch" style="background: #6a5a4a;" title="Driftwood" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #f8f4f0;" title="Creamy Cloud" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #b8b0a8;" title="Rainy Day" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #4a4a4a;" title="Rainy Night" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #c8c8c8;" title="Moonbeam" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #a0a0a0;" title="Silver Linings" onclick="selectSwatch(this)"></div>
+        <!-- Row 3 -->
+        <div class="color-swatch" style="background: #8a8a8a;" title="Smoky Skies" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #3a3a3a;" title="Charcoal Grey" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #1a1a2e;" title="Midnight Marie" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #1a2a4a;" title="Navy Blue" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #6a8aaa;" title="Slate Blue" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #7aacc8;" title="Malibu Blue" onclick="selectSwatch(this)"></div>
+        <!-- Row 4 -->
+        <div class="color-swatch" style="background: #a8c8d8;" title="Glacier Blue" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: #8ab8d0;" title="Sky Blue" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: linear-gradient(135deg, #e8a0b0 50%, #c09080 50%);" title="Autumn Moon" onclick="selectSwatch(this)"></div>
+        <div class="color-swatch" style="background: linear-gradient(135deg, #c09878 50%, #a08060 50%);" title="Wild Olive" onclick="selectSwatch(this)"></div>
+      </div>
+
+      <!-- Add to Cart -->
+      <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="10" width="24" height="16" rx="2"/>
+            <path d="M4 14h24"/>
+            <path d="M8 20h6"/>
+          </svg>
+          <span>Free Shipping on Orders $250+</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4,16 12,24 28,8"/>
+          </svg>
+          <span>Easy Returns</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 32 32" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4C10 4 6 8 6 14c0 4 2 6 4 8l6 6 6-6c2-2 4-4 4-8 0-6-4-10-10-10z"/>
+            <circle cx="16" cy="14" r="4"/>
+          </svg>
+          <span>Machine Washable</span>
+        </div>
+      </div>
+
+      <!-- Accordion Sections -->
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Description
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>Meet Peony - a soft, blush-pink blanket from our Spring Collection. This ultra-soft throw brings warmth and elegance to any space, with a delicate color that complements both modern and traditional interiors.</p>
+            <p>Each blanket is crafted with our signature buttery-soft fabric that gets even softer with every wash. Perfect for curling up on the couch, layering on your bed, or gifting to someone special.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Details &amp; Sizing
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <ul>
+              <li><strong>Large:</strong> 60 x 72 inches - Perfect for the couch or bed</li>
+              <li><strong>Medium:</strong> 50 x 60 inches - Great for personal use</li>
+              <li><strong>Baby:</strong> 30 x 40 inches - Sized for little ones</li>
+              <li><strong>The Lola XL:</strong> 72 x 90 inches - Fits a king-size bed</li>
+            </ul>
+            <p>Weight: approximately 3.5 lbs (Large)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Materials &amp; Care
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>Made from 100% premium microfiber that is ultra-soft and durable. Our proprietary weaving technique creates a plush, velvety texture on both sides.</p>
+            <ul>
+              <li>Machine wash cold on gentle cycle</li>
+              <li>Tumble dry low</li>
+              <li>Do not bleach or iron</li>
+              <li>Gets softer with every wash</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+          Shipping
+          <svg viewBox="0 0 14 14"><polyline points="2,5 7,10 12,5"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-content-inner">
+            <p>FREE standard shipping on all orders over $250. Orders typically ship within 1-2 business days.</p>
+            <ul>
+              <li>Standard shipping: 5-7 business days</li>
+              <li>Expedited shipping: 2-3 business days</li>
+              <li>Express shipping: 1-2 business days</li>
+            </ul>
+            <p>We ship to all 50 US states and internationally. International shipping rates and times vary by destination.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share Row -->
+      <div class="share-row">
+        <a href="#">Share</a>
+        <a href="#">Tweet</a>
+        <a href="#">Pin it</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-newsletter">
+        <h4>Sign up for exclusive offers</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="Enter your email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">Shop all</a></li>
+          <li><a href="#">Bundles</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Our Letters</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Shipping, returns, and exchanges</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Corporate Gifting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.17V12a4.85 4.85 0 01-3.58-1.59V6.69h3.58z"/></svg>
+          </a>
+        </div>
+        <div class="payment-icons">
+          <div class="pay-icon">AMEX</div>
+          <div class="pay-icon">VISA</div>
+          <div class="pay-icon">MC</div>
+          <div class="pay-icon">DISC</div>
+          <div class="pay-icon">GPay</div>
+          <div class="pay-icon">Shop</div>
+        </div>
+        <span style="font-size: 12px; color: var(--color-warm-gray);">&copy; 2026 Entreposto</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <svg viewBox="0 0 200 55" fill="none">
+          <text x="0" y="42" font-family="'Fraunces', serif" font-size="30" font-weight="300" font-style="italic" fill="#333029">entreposto</text>
+        </svg>
+      </div>
+      <span class="copyright">&copy; 2026 Entreposto</span>
+    </div>
+  </footer>
+
+  <script>
+    // Header shadow on scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Main image backgrounds for each thumbnail
+    const imageBackgrounds = [
+      'linear-gradient(135deg, #f2c4cc 0%, #e8a0b0 30%, #f0b8c4 50%, #eaaab8 70%, #f5d0d8 100%)',
+      'linear-gradient(160deg, #f0b8c4 0%, #e8a0b0 40%, #d89aa8 60%, #f2c8d0 100%)',
+      'linear-gradient(120deg, #e0c8b0 0%, #c8a888 30%, #b89878 50%, #d4b898 80%, #e8d8c4 100%)',
+      'linear-gradient(140deg, #d8c0b0 0%, #e8a0b0 25%, #f0c8d0 50%, #e0b8a8 75%, #c8a090 100%)'
+    ];
+
+    function setMainImage(index, thumbEl) {
+      // Update main image
+      document.getElementById('mainImageSwatch').style.background = imageBackgrounds[index];
+
+      // Update active thumbnail
+      document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+      thumbEl.classList.add('active');
+    }
+
+    // Size selector
+    function selectSize(el, label) {
+      document.querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('selectedSizeLabel').textContent = label;
+    }
+
+    // Color swatch selector
+    function selectSwatch(el) {
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Accordion
+    function toggleAccordion(trigger) {
+      const item = trigger.parentElement;
+      const content = trigger.nextElementSibling;
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-item').forEach(ai => {
+        ai.classList.remove('open');
+        ai.querySelector('.accordion-content').style.maxHeight = null;
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
+    // Add to cart (demo)
+    function addToCart() {
+      const btn = document.querySelector('.add-to-cart');
+      const original = btn.textContent;
+      btn.textContent = 'Added!';
+      btn.style.background = '#5a7a5a';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.background = '';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
