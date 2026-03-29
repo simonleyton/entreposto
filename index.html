@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Softest Throws & Super Soft Blankets | Entreposto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-bg: #faf8f6;
+      --color-text: #333029;
+      --color-header-bg: #e9e5d9;
+      --color-cream: #f5f0eb;
+      --color-warm-gray: #a09a8f;
+      --color-border: #d9d3c7;
+      --font-heading: 'Fraunces', serif;
+      --font-body: 'Open Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ========== ANNOUNCEMENT BAR ========== */
+    .announcement-bar {
+      background: var(--color-text);
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      font-weight: 400;
+      overflow: hidden;
+      height: 33px;
+      line-height: 33px;
+    }
+
+    .announcement-slider {
+      display: flex;
+      flex-direction: column;
+      animation: slideAnnouncements 8s ease-in-out infinite;
+    }
+
+    .announcement-slider span {
+      height: 33px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes slideAnnouncements {
+      0%, 40% { transform: translateY(0); }
+      50%, 90% { transform: translateY(-33px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* ========== HEADER ========== */
+    .site-header {
+      background: var(--color-header-bg);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .site-header.scrolled {
+      box-shadow: 0 1px 12px rgba(51, 48, 41, 0.08);
+    }
+
+    .logo {
+      flex-shrink: 0;
+    }
+
+    .logo svg {
+      height: 44px;
+      width: auto;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .main-nav a,
+    .main-nav .nav-dropdown-trigger {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: 0.025em;
+      position: relative;
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: opacity 0.2s;
+    }
+
+    .main-nav a:hover,
+    .main-nav .nav-dropdown-trigger:hover {
+      opacity: 0.65;
+    }
+
+    .nav-dropdown-trigger svg {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(51, 48, 41, 0.12);
+      padding: 16px 24px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      transform: translateX(-50%) translateY(14px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(8px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-trigger svg {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 6px 0;
+      font-size: 14px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+
+    .nav-dropdown-menu a:hover {
+      opacity: 0.6;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-icons button,
+    .header-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .header-icons button:hover,
+    .header-icons a:hover {
+      opacity: 0.6;
+    }
+
+    .header-icons svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .lang-select {
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .lang-select svg { width: 10px; height: 10px; }
+
+    /* ========== HERO ========== */
+    .hero {
+      position: relative;
+      height: 85vh;
+      min-height: 550px;
+      overflow: hidden;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .hero-overlay h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, 49px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-overlay p {
+      font-size: 21px;
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.2);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 20px 80px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      text-transform: none;
+      border: 1px solid #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-light {
+      background: #fdfbfa;
+      color: #000;
+    }
+
+    .btn-light:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .btn-dark {
+      background: var(--color-text);
+      color: #fff;
+      border-color: var(--color-text);
+    }
+
+    .btn-dark:hover {
+      background: #1a1815;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-text);
+      border: 1.5px solid var(--color-text);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-text);
+      color: #fff;
+    }
+
+    /* ========== FEATURED HEADING ========== */
+    .section-heading {
+      text-align: center;
+      padding: 72px 20px 12px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--font-heading);
+      font-size: 45px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .section-heading a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 22px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .section-heading a:hover {
+      opacity: 0.6;
+    }
+
+    /* ========== PRODUCT CAROUSEL ========== */
+    .product-carousel-wrapper {
+      position: relative;
+      padding: 32px 0 64px;
+    }
+
+    .product-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 0 48px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .product-carousel::-webkit-scrollbar { display: none; }
+
+    .carousel-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.5px solid var(--color-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.2s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--color-text);
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .carousel-btn:hover svg {
+      stroke: #fff;
+    }
+
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-text);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .product-card {
+      flex: 0 0 273px;
+      text-decoration: none;
+      display: block;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--color-text);
+      color: #fff;
+      font-size: 15px;
+      padding: 7px 9px 7px 11px;
+      letter-spacing: 0.025em;
+      font-weight: 400;
+      z-index: 2;
+    }
+
+    .product-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #eee9e3;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .product-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .product-card:hover .product-image-wrapper img {
+      transform: scale(1.04);
+    }
+
+    .product-shop-btn {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: rgba(255,255,255,0.95);
+      color: var(--color-text);
+      padding: 10px 28px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .product-card:hover .product-shop-btn {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .stars {
+      display: flex;
+      gap: 1px;
+      color: #c9a96e;
+    }
+
+    .stars svg {
+      width: 13px;
+      height: 13px;
+      fill: #c9a96e;
+    }
+
+    .review-count {
+      font-size: 13px;
+      color: var(--color-text);
+    }
+
+    .product-card h3 {
+      font-family: var(--font-heading);
+      font-size: 21px;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .product-card .price {
+      font-size: 15px;
+      color: var(--color-text);
+    }
+
+    /* ========== FEATURES ROW ========== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      padding: 103px 80px 97px;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .feature-item svg {
+      width: 56px;
+      height: 56px;
+      stroke: var(--color-text);
+      fill: none;
+      stroke-width: 1;
+      margin: 0 auto 20px;
+    }
+
+    .feature-item h3 {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 400;
+      font-style: normal;
+      margin-bottom: 10px;
+    }
+
+    .feature-item p {
+      font-size: 16px;
+      color: var(--color-text);
+      line-height: 1.7;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ========== CATEGORY GRID ========== */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 80px 48px;
+    }
+
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .category-card .cat-label {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .category-image {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .category-card:hover .category-image img {
+      transform: scale(1.04);
+    }
+
+    .category-image .btn {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 16px;
+      padding: 8px 12px;
+      background: var(--color-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-text);
+      font-weight: 400;
+      transition: all 0.3s;
+    }
+
+    .category-image .btn:hover {
+      background: #fff;
+    }
+
+    /* ========== STORY SECTION ========== */
+    .story-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+
+    .story-image {
+      overflow: hidden;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 80px;
+      text-align: center;
+      background: var(--color-bg);
+    }
+
+    .story-content h2 {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .story-content p {
+      font-size: 17px;
+      color: var(--color-warm-gray);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+
+    /* ========== SOCIAL SECTION ========== */
+    .social-section {
+      text-align: center;
+      padding: 72px 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+
+    .social-icons a:hover {
+      background: var(--color-text);
+      border-color: var(--color-text);
+      color: #fff;
+    }
+
+    .social-icons svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .social-section .connect-text {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-warm-gray);
+    }
+
+    .social-section .connect-text a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ========== FOOTER ========== */
+    .site-footer {
+      padding: 64px 48px 40px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-newsletter h4 {
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--color-text);
+      margin-bottom: 16px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1px solid var(--color-border);
+      background: transparent;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--color-text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .newsletter-form input::placeholder {
+      color: var(--color-warm-gray);
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--color-text);
+    }
+
+    .newsletter-form button {
+      padding: 12px 24px;
+      background: var(--color-text);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: #1a1815;
+    }
+
+    .footer-col h5 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      font-size: 13.5px;
+      color: var(--color-warm-gray);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--color-text);
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .footer-social a:hover { opacity: 0.6; }
+
+    .footer-social svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--color-text);
+    }
+
+    .payment-icons {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .payment-icons .pay-icon {
+      width: 38px;
+      height: 24px;
+      background: #fff;
+      border: 1px solid #e5e2dd;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--color-warm-gray);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-bottom .copyright {
+      font-size: 12px;
+      color: var(--color-warm-gray);
+    }
+
+    .footer-logo svg {
+      height: 48px;
+      opacity: 0.25;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .site-header { padding: 0 20px; }
+      .main-nav { display: none; }
+      .features { grid-template-columns: 1fr; padding: 48px 20px; }
+      .categories { grid-template-columns: 1fr; padding: 48px 20px; }
+      .story-section { grid-template-columns: 1fr; }
+      .story-content { padding: 40px 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .product-carousel { padding: 0 20px; }
+      .hero { height: 65vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    <div class="announcement-slider">
+      <span>Life-Changing Softness</span>
+      <span>FREE shipping on orders $250+</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 170 50" fill="none">
+        <text x="0" y="38" font-family="'Fraunces', serif" font-size="26" font-weight="300" font-style="italic" fill="#333029">entreposto</text>
+      </svg>
+    </a>
+
+    <nav class="main-nav">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">
+          Shop All
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="#">The Original</a>
+          <a href="#">New Arrivals</a>
+          <a href="#">Weighted Blankets</a>
+          <a href="#">Spring Collection</a>
+          <a href="#">The XL</a>
+          <a href="#">Pillows</a>
+          <a href="#">Pet Blankets</a>
+          <a href="#">Accessories</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-trigger">
+          About Us
+          <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="#">Our Story</a>
+          <a href="#">Our Letters</a>
+          <a href="#">Loyalty Program</a>
+          <a href="#">Blankets for the Brave</a>
+          <a href="#">Ambassador Program</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="header-icons">
+      <button class="lang-select">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='t'%3E%3Crect width='60' height='30'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23t)'%3E%3Crect width='60' height='30' fill='%23002868'/%3E%3Cg fill='%23bf0a30'%3E%3Crect y='3.46' width='60' height='2.31'/%3E%3Crect y='8.08' width='60' height='2.31'/%3E%3Crect y='12.69' width='60' height='2.31'/%3E%3Crect y='17.31' width='60' height='2.31'/%3E%3Crect y='21.92' width='60' height='2.31'/%3E%3Crect y='26.54' width='60' height='2.31'/%3E%3C/g%3E%3Crect width='24' height='16.15' fill='%23002868'/%3E%3C/g%3E%3C/svg%3E" alt="" style="width:18px;height:12px;border-radius:1px;vertical-align:middle;margin-right:4px;">
+        US EN
+        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg>
+      </button>
+      <!-- User icon -->
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+      <!-- Cart icon -->
+      <a href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO SLIDESHOW -->
+    <section class="hero">
+      <div class="hero-slide active" id="slide1">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=1600&q=80" alt="Spring collection lifestyle" style="object-position: center 30%;">
+        <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(80,70,50,0.08), rgba(80,70,50,0.25));">
+          <h1>The Spring '26 Collection</h1>
+          <p>Limited inventory available.</p>
+          <a href="#" class="btn btn-light">Shop Now</a>
+        </div>
+      </div>
+      <div class="hero-slide" id="slide2">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&q=80" alt="Cozy living space" style="object-position: center 60%;">
+        <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(80,70,50,0.05), rgba(80,70,50,0.3));">
+          <h1>The World's #1 Blanket</h1>
+          <p>29,000+ five-star reviews.</p>
+          <a href="#" class="btn btn-light">Get Yours</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT SECTION -->
+    <div class="section-heading fade-up">
+      <h2>The World&rsquo;s #1 Blanket</h2>
+      <a href="#">Get Yours</a>
+    </div>
+
+    <div class="product-carousel-wrapper">
+      <button class="carousel-btn prev" onclick="scrollCarousel(-1)">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+
+      <div class="product-carousel" id="productCarousel">
+        <!-- Product 1 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">New</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1629949009765-09dba3dc0a0a?w=500&q=80" alt="Peony blanket" style="object-fit:cover; filter: hue-rotate(320deg) saturate(0.7) brightness(1.1);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(2 Reviews)</span>
+          </div>
+          <h3>Peony</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 2 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">New</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Greenhouse blanket" style="object-fit:cover; filter: hue-rotate(80deg) saturate(0.35) brightness(1.15);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(1 Review)</span>
+          </div>
+          <h3>Greenhouse</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 3 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">New</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Wisteria blanket" style="object-fit:cover; filter: hue-rotate(230deg) saturate(0.3) brightness(1.2);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(3 Reviews)</span>
+          </div>
+          <h3>Wisteria</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 4 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Antique Ivory blanket" style="object-fit:cover; filter: saturate(0.15) brightness(1.25) sepia(0.15);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Antique Ivory</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 5 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Desert Dune blanket" style="object-fit:cover; filter: saturate(0.3) brightness(1.1) sepia(0.3);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Desert Dune</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 6 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Caramel N Cream blanket" style="object-fit:cover; filter: saturate(0.4) brightness(1.05) sepia(0.25) hue-rotate(10deg);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Caramel N' Cream</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 7 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Toasted Almond blanket" style="object-fit:cover; filter: saturate(0.4) brightness(1.0) sepia(0.35);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Toasted Almond</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 8 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Creamy Cloud blanket" style="object-fit:cover; filter: saturate(0.1) brightness(1.3) sepia(0.05);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Creamy Cloud</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 9 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-badge">Best Seller</div>
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Smoky Skies blanket" style="object-fit:cover; filter: saturate(0.15) brightness(0.85) hue-rotate(200deg);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Smoky Skies</h3>
+          <span class="price">From $125.00</span>
+        </a>
+
+        <!-- Product 10 -->
+        <a href="#" class="product-card fade-up">
+          <div class="product-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=500&q=80" alt="Malibu Blue blanket" style="object-fit:cover; filter: saturate(0.5) brightness(1.0) hue-rotate(190deg);">
+            <div class="product-shop-btn">Shop Now</div>
+          </div>
+          <div class="product-rating">
+            <div class="stars">
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+              <svg viewBox="0 0 16 16"><polygon points="8,1 10.2,5.4 15,6.1 11.5,9.5 12.3,14.3 8,12 3.7,14.3 4.5,9.5 1,6.1 5.8,5.4"/></svg>
+            </div>
+            <span class="review-count">(29,011 Reviews)</span>
+          </div>
+          <h3>Malibu Blue</h3>
+          <span class="price">From $125.00</span>
+        </a>
+      </div>
+
+      <button class="carousel-btn next" onclick="scrollCarousel(1)">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <div class="feature-item fade-up">
+        <svg viewBox="0 0 56 56">
+          <path d="M28 8c-4 6-12 14-12 22a12 12 0 0 0 24 0c0-8-8-16-12-22z" stroke-dasharray="3 3"/>
+          <path d="M22 28c2-3 4-5 6-8" />
+          <circle cx="20" cy="18" r="3"/>
+          <path d="M17 15c-2-3-1-6 2-8"/>
+        </svg>
+        <h3>Oh-So-Soft</h3>
+        <p>The plushest faux-fur fabric, 4-way stretch, and unbelievable softness</p>
+      </div>
+      <div class="feature-item fade-up">
+        <svg viewBox="0 0 56 56">
+          <path d="M28 16c6 4 14 6 14 14a14 14 0 1 1-28 0c0-8 8-10 14-14z"/>
+          <path d="M20 32l4 4 8-10"/>
+        </svg>
+        <h3>Done Right</h3>
+        <p>OEKO-TEX&reg; Standard 100 certified faux fur, double hemmed for durability, and machine washable</p>
+      </div>
+      <div class="feature-item fade-up">
+        <svg viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="14"/>
+          <circle cx="28" cy="28" r="5"/>
+          <circle cx="28" cy="10" r="3"/>
+          <circle cx="28" cy="46" r="3"/>
+          <circle cx="10" cy="28" r="3"/>
+          <circle cx="46" cy="28" r="3"/>
+        </svg>
+        <h3>Design Forward</h3>
+        <p>Contemporary colors, textures, and designs that elevate your living space</p>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+      <a href="#" class="category-card fade-up">
+        <div class="cat-label">Gift Guide</div>
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="Gift Guide" style="object-position: center;">
+          <span class="btn">Shop Gift Guide</span>
+        </div>
+      </a>
+      <a href="#" class="category-card fade-up">
+        <div class="cat-label">Blankets</div>
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80" alt="Blankets" style="object-position: center;">
+          <span class="btn">Shop Blankets</span>
+        </div>
+      </a>
+      <a href="#" class="category-card fade-up">
+        <div class="cat-label">Pillows</div>
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1592789705501-f9ae4287c4f9?w=600&q=80" alt="Pillows" style="object-position: center;">
+          <span class="btn">Shop Pillows</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section class="story-section fade-up">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187?w=800&q=80" alt="Woman wrapped in blanket" style="object-position: center 20%;">
+      </div>
+      <div class="story-content">
+        <h2>Life-Changing Softness, Life-Changing Impact</h2>
+        <p>Entreposto was founded in honor of Amy Higham &mdash; the mother of our founders, Tommy and Will. Today, her legacy lives on through Blankets for the Brave, our program that provides blankets to breast cancer patients through the Huntsman Cancer Institute.</p>
+        <a href="#" class="btn btn-dark">Our Story</a>
+      </div>
+    </section>
+
+    <!-- SOCIAL SECTION -->
+    <section class="social-section fade-up">
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.17V12a4.85 4.85 0 01-3.58-1.59V6.69h3.58z"/></svg>
+        </a>
+      </div>
+      <p class="connect-text">Let&rsquo;s connect. <a href="#">@entreposto</a></p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-newsletter">
+        <h4>Sign up for exclusive offers</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault()">
+          <input type="email" placeholder="Enter your email">
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#">Shop all</a></li>
+          <li><a href="#">Bundles</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Our Letters</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Shipping, returns, and exchanges</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Corporate Gifting</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13.2a8.16 8.16 0 005.58 2.17V12a4.85 4.85 0 01-3.58-1.59V6.69h3.58z"/></svg>
+          </a>
+        </div>
+        <div class="payment-icons">
+          <div class="pay-icon">AMEX</div>
+          <div class="pay-icon">VISA</div>
+          <div class="pay-icon">MC</div>
+          <div class="pay-icon">DISC</div>
+          <div class="pay-icon">GPay</div>
+          <div class="pay-icon">Shop</div>
+        </div>
+        <span style="font-size: 12px; color: var(--color-warm-gray);">&copy; 2026 Entreposto</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <svg viewBox="0 0 200 55" fill="none">
+          <text x="0" y="42" font-family="'Fraunces', serif" font-size="30" font-weight="300" font-style="italic" fill="#333029">entreposto</text>
+        </svg>
+      </div>
+      <span class="copyright">&copy; 2026 Entreposto</span>
+    </div>
+  </footer>
+
+  <script>
+    // Hero slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 6000);
+
+    // Product carousel scroll
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById('productCarousel');
+      const scrollAmount = 280 * 2;
+      carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // Header shadow on scroll
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // Fade-up on scroll (Intersection Observer)
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
